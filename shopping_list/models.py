@@ -11,7 +11,7 @@ class Product(models.Model):
     )
     name = models.CharField(max_length=50)
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.name}"
 
 class shoppinglist(models.Model):
@@ -19,5 +19,5 @@ class shoppinglist(models.Model):
     amount = models.PositiveIntegerField()
     id_user = models.ForeignKey(User, on_delete=models.PROTECT)
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.id_product.name}"
