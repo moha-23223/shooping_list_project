@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}Product Details{% endblock %}
+
+{% block content %}
+    <div class="card" style="margin: 50px; padding: 20px;">
+        <h1 class="text-gradient">{{ product.name }}</h1>
+        <p style="font-size: 1.2rem; font-weight: 500;">Price: ${{ product.price }}</p>
+        <a href="{% url 'product_list' %}" class="btn-modern-gradient" style="padding: 10px; text-decoration: none;">Back to List</a>
+    </div>
+{% endblock %}

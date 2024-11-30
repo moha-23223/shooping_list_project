@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+
+{% block title %}My Shopping List{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <h1 class="text-center mb-4">Shopping List</h1>
+        <div class="text-end mb-3">
+            <a href="{% url 'Shopping_create' %}" class="btn btn-success">Add New Product to Shopping List</a>
+        </div>
+
+       
+        {% if shopping_list_items %}
+        <ul class="list-group shadow-sm">
+            {% for item in shopping_list_items %}
+            <li class="list-group-item d-flex align-items-center justify-content-between">
+                <div>
+                    <strong>{{ item.id_product.name }}</strong><br>
+                    <small>Price: {{ item.id_product.price }} | Amount: {{ item.amount }}</small>
+                </div>
+                <div>
+                    <a href="{% url 'Shopping_update' item.id_product.id %}" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="{% url 'Shopping_delete' item.id_product.id %}" class="btn btn-sm btn-danger">Delete</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-muted text-center mt-4">No items in your shopping list. Add some!</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

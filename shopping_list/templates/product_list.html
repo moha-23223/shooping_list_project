@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}Product List{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <h1 class="text-center mb-4 text-gradient">Products</h1>
+        
+        
+        <div class="text-end mb-3">
+            <a href="{% url 'product_create' %}" class="btn btn-modern-gradient" style="padding: 10px 20px; border-radius: 30px;">+ Add New Product</a>
+        </div>
+
+    
+        {% if product %}
+        <ul class="list-group shadow-sm" style="border-radius: 10px; overflow: hidden;">
+            {% for product in product %}
+            <li class="list-group-item d-flex align-items-center justify-content-between" style="background: linear-gradient(135deg, #f9f9f9, #ffffff); padding: 20px; border-bottom: 1px solid #ddd;">
+                <div>
+                    <strong style="font-size: 1.2rem; color: #333;">{{ product.name }}</strong>
+                    <p style="margin: 0; font-size: 0.9rem; color: #666;">Price: <span style="color: #2575fc;">{{ product.price }}</span></p>
+                </div>
+                <div>
+                    <a href="{% url 'product_detail' product.id %}" class="btn btn-sm btn-outline-info" style="margin-right: 5px; border-radius: 20px;">View</a>
+                    <a href="{% url 'product_update' product.id %}" class="btn btn-sm btn-outline-primary" style="margin-right: 5px; border-radius: 20px;">Edit</a>
+                    <a href="{% url 'product_delete' product.id %}" class="btn btn-sm btn-outline-danger" style="border-radius: 20px;">Delete</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <div class="text-center">
+            <p class="text-muted" style="font-size: 1.1rem;">No products available. Add some!</p>
+            <img src="{% static 'images/empty-list.svg' %}" alt="No Products" style="max-width: 200px;">
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

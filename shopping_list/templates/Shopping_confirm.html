@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+{% block title %}Delete Product{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="col-md-6 col-lg-5">
+        <div class="card border-0 shadow-lg rounded-4">
+            <div class="card-body p-4 text-center">
+                <h1 class="text-danger fw-bold mb-4">Delete Product</h1>
+                <p class="fs-4 text-muted mb-4">Are you sure you want to delete the product <span class="text-warning fw-bold">{{ product.name }}</span>?</p>
+                
+                <div class="d-flex justify-content-center gap-3">
+                <form method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-lg rounded-pill px-5">
+                        Confirm
+                    </button>
+                    <a href="{% url 'Shoppinglist' %}" class="btn btn-outline-secondary btn-lg rounded-pill px-5">
+                        Cancel
+                    </a>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

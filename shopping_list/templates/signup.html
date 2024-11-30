@@ -1,0 +1,58 @@
+{% extends "index.html" %}
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="col-md-6 col-lg-4">
+        <div class="card border-0 shadow-lg rounded-4">
+            <div class="card-body p-4">
+                <h2 class="text-center text-gradient display-5 fw-bold mb-4">Sign Up</h2>
+                
+           
+                {% if messages %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <ul class="mb-0">
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+             
+                <form method="POST" novalidate>
+                    {% csrf_token %}
+                    
+                    <div class="mb-4">
+                        <label for="username" class="form-label fw-bold text-secondary">Username:</label>
+                        <input type="text" name="username" id="username" class="form-control modern-input" required>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="email" class="form-label fw-bold text-secondary">Email:</label>
+                        <input type="email" name="email" id="email" class="form-control modern-input" required>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="password1" class="form-label fw-bold text-secondary">Password:</label>
+                        <input type="password" name="password1" id="password1" class="form-control modern-input" required>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="password2" class="form-label fw-bold text-secondary">Confirm Password:</label>
+                        <input type="password" name="password2" id="password2" class="form-control modern-input" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-gradient-primary btn-lg w-100 rounded-pill fw-bold shadow mt-3">
+                        Sign Up
+                    </button>
+                </form>
+                
+              
+                <div class="text-center mt-3">
+                    <p class="text-muted">Already have an account? <a href="{% url 'login' %}" class="text-primary fw-bold">Log in here</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

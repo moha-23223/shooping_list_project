@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+{% block title %}Add Product{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="col-md-8 col-lg-6">
+        <div class="card border-0 shadow-lg rounded-4">
+            <div class="card-body p-4">
+                <h1 class="text-center text-gradient display-5 fw-bold mb-3">Add Product</h1>
+                <form method="POST" novalidate>
+                    {% csrf_token %}
+                    
+               
+                    {% for field in form %}
+                    <div class="mb-4">
+                        <label for="{{ field.id_for_label }}" class="form-label fw-bold text-secondary">
+                            {{ field.label }}
+                        </label>
+                        {{ field }}
+                        {% if field.errors %}
+                        <small class="text-danger">{{ field.errors|striptags }}</small>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    
+               
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-gradient-primary btn-lg rounded-pill fw-bold shadow">
+                            Save Product
+                        </button>
+                        <a href="{% url 'Shoppinglist' %}" class="btn btn-outline-secondary btn-lg rounded-pill px-5">
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

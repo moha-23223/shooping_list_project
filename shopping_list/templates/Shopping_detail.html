@@ -1,0 +1,7 @@
+{% extends "index.html"%}
+{% block title %}login{% endblock %}
+{% block content %}
+<h1>{{ product.name }}</h1>
+<p>{{ product.price }}</p>
+<a href="{% url 'Shopping_list' %}">Back to list</a>
+{% endblock %}

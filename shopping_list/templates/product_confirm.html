@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}Delete Product{% endblock %}
+
+{% block content %}
+    <div class="card" style="margin: 50px; padding: 20px;">
+        <h1 class="text-gradient">Delete Product</h1>
+        <p>Are you sure you want to delete <strong>"{{ product.name }}"</strong>?</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button class="btn-modern-gradient" type="submit">Confirm</button>
+            <a href="{% url 'product_list' %}" class="btn-modern-gradient" style="padding: 10px; text-decoration: none;">Cancel</a>
+        </form>
+    </div>
+{% endblock %}
